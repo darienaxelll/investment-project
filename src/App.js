@@ -1,4 +1,8 @@
-import logo from './assets/investment-calculator-logo.png';
+import logo from "./assets/investment-calculator-logo.png";
+import CurrentSavings from "./Inputs/CurrentSaving";
+import ExpectedIntrest from "./Inputs/ExpectedIntrest";
+import InvestmentDuration from "./Inputs/InvestmentDuration";
+import YearlySavings from "./Inputs/YearlySavings";
 
 function App() {
   const calculateHandler = (userInput) => {
@@ -7,10 +11,10 @@ function App() {
 
     const yearlyData = []; // per-year results
 
-    let currentSavings = +userInput['current-savings']; // feel free to change the shape of this input object!
-    const yearlyContribution = +userInput['yearly-contribution']; // as mentioned: feel free to change the shape...
-    const expectedReturn = +userInput['expected-return'] / 100;
-    const duration = +userInput['duration'];
+    let currentSavings = +userInput["current-savings"]; // feel free to change the shape of this input object!
+    const yearlyContribution = +userInput["yearly-contribution"]; // as mentioned: feel free to change the shape...
+    const expectedReturn = +userInput["expected-return"] / 100;
+    const duration = +userInput["duration"];
 
     // The below code calculates yearly results (total savings, interest etc)
     for (let i = 0; i < duration; i++) {
@@ -37,26 +41,12 @@ function App() {
 
       <form className="form">
         <div className="input-group">
-          <p>
-            <label htmlFor="current-savings">Current Savings ($)</label>
-            <input type="number" id="current-savings" />
-          </p>
-          <p>
-            <label htmlFor="yearly-contribution">Yearly Savings ($)</label>
-            <input type="number" id="yearly-contribution" />
-          </p>
+          <CurrentSavings />
+          <YearlySavings />
         </div>
         <div className="input-group">
-          <p>
-            <label htmlFor="expected-return">
-              Expected Interest (%, per year)
-            </label>
-            <input type="number" id="expected-return" />
-          </p>
-          <p>
-            <label htmlFor="duration">Investment Duration (years)</label>
-            <input type="number" id="duration" />
-          </p>
+          <ExpectedIntrest />
+          <InvestmentDuration />
         </div>
         <p className="actions">
           <button type="reset" className="buttonAlt">

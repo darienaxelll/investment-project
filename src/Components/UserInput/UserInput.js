@@ -1,17 +1,31 @@
 import { useState } from "react";
 
+const initialUserInput = {
+  "current-savings": 10000,
+  "yearly-contribution": 200,
+  "expected-return": 7,
+  duration: 10,
+};
+
 const UserInput = () => {
+  const [userInput, setUserInput] = useState(initialUserInput);
+
   const submitHandler = (e) => {
     e.preventDefault();
     console.log("SUBMIT");
   };
 
   const resetHandler = () => {
-    console.log("RESET");
+    setUserInput(initialUserInput);
   };
 
   const inputChangeHandler = (input, value) => {
-    console.log(input, value);
+    setUserInput((prevInput) => {
+      return {
+        ...prevInput,
+        [input]: value,
+      };
+    });
   };
 
   return (
@@ -54,9 +68,7 @@ const UserInput = () => {
         <p>
           <label htmlFor="duration">Investment Duration (years)</label>
           <input
-            onChange={(e) =>
-              inputChangeHandler("duration", e.target.value)
-            }
+            onChange={(e) => inputChangeHandler("duration", e.target.value)}
             type="number"
             id="duration"
           />

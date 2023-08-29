@@ -11,7 +11,7 @@ const UserInput = () => {
   };
 
   const inputChangeHandler = (input, value) => {
-    console.log("Click");
+    console.log(input, value);
   };
 
   return (

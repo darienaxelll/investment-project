@@ -32,8 +32,6 @@ function App() {
         yearlyContribution: yearlyContribution,
       });
     }
-
-    console.log(userInput["current-savings"]);
   }
 
   // do something with yearlyData ...
@@ -45,7 +43,11 @@ function App() {
       <UserInput onCalculate={calculateHandler} />
 
       {/* Todo: Show below table conditionally (only once result data is available) */}
-      {!userInput && <p>No investemnts to calculate yet...</p>}
+      {!userInput && (
+        <p style={{ textAlign: "center" }}>
+          No investemnts to calculate yet...
+        </p>
+      )}
       {/* Show fallback text if no data is available */}
       {userInput && (
         <ResultsTable
